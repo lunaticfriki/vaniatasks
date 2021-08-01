@@ -1,0 +1,14 @@
+{
+  "name": "vaniatasks",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "lunaticfriki",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node app"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^8.1.2"
+  }
+}
