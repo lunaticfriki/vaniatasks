@@ -13,7 +13,7 @@ const menuOpts = [
       { value: 4, name: '4. Show pending tasks' },
       { value: 5, name: '5. Complete tasks' },
       { value: 6, name: '6. Delete task' },
-      { value: 0, name: '0. Exit' },
+      { value: 7, name: '7. Exit' },
     ],
   },
 ]
@@ -47,4 +47,22 @@ const confirmation = async () => {
   return await inquirer.prompt(confirmationQuestion)
 }
 
-module.exports = { inquirerMenu, confirmation }
+const readInput = async (message) => {
+  const question = [
+    {
+      type: 'input',
+      name: 'description',
+      message,
+      validate(value) {
+        if (value.length === 0) {
+          return 'Please, enter some value'
+        }
+        return true
+      },
+    },
+  ]
+  const { description } = await inquirer.prompt(question)
+  return description
+}
+
+module.exports = { inquirerMenu, confirmation, readInput }
