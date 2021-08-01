@@ -18,7 +18,7 @@ const main = async () => {
           console.log('No tasks to show yet'.red)
           return
         }
-        console.log(tasks._list)
+        console.log(tasks.arrayList)
         break
     }
     option !== 7 && (await confirmation())
