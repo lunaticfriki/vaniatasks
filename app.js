@@ -14,6 +14,10 @@ const main = async () => {
         tasks.createNewTask(description)
         break
       case 2:
+        if (Object.keys(tasks._list).length === 0) {
+          console.log('No tasks to show yet'.red)
+          return
+        }
         console.log(tasks._list)
         break
     }
