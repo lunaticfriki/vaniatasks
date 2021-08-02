@@ -55,6 +55,12 @@ class Tasks {
     )
     this.showList(completedTasks)
   }
+
+  deleteTasks(id = '') {
+    if (this._list[id]) {
+      delete this._list[id]
+    }
+  }
 }
 
 module.exports = Tasks

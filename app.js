@@ -1,5 +1,11 @@
 require('colors')
-const { inquirerMenu, confirmation, readInput } = require('./helpers/inquirer')
+const {
+  inquirerMenu,
+  pause,
+  readInput,
+  tasksToDeleteList,
+  confirmChoice,
+} = require('./helpers/inquirer')
 const { saveInfo, readInfo } = require('./helpers/saveFIle')
 const Tasks = require('./models/tasks')
 
@@ -42,11 +48,22 @@ const main = async () => {
         }
         tasks.showCompletedTasks(false)
         break
+      case 6:
+        if (Object.keys(tasks._list).length === 0) {
+          console.log('No tasks to delete yet'.red)
+          return
+        }
+        const id = await tasksToDeleteList(tasks.arrayList)
+        if (id !== 0) {
+          const confirmation = await confirmChoice('Are you sure?')
+          confirmation && tasks.deleteTasks(id)
+        }
+        break
     }
 
     saveInfo(tasks.arrayList)
 
-    option !== 7 && (await confirmation())
+    option !== 7 && (await pause())
   } while (option !== 7)
 }
 
