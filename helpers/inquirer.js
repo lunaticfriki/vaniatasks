@@ -71,7 +71,11 @@ const tasksToDeleteList = async (tasks = []) => {
 
     return {
       value: task.id,
-      name: `${index} ${task.description}`,
+      name: `${index} ${task.description}: ${
+        task.completedIn
+          ? `Completed in ${task.completedIn}`.green
+          : 'Pending'.red
+      }`,
     }
   })
 
