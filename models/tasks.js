@@ -31,16 +31,29 @@ class Tasks {
     this._list[task.id] = task
   }
 
-  completeList() {
+  showList(list) {
     console.log()
-    this.arrayList.map((el, index) => {
+    list.map((el, index) => {
       const i = `${index + 1}`.green
       const description = el.description
       const state =
-        el.completedIn !== null ? 'Completed'.green : 'Pending'.magenta
+        el.completedIn !== null
+          ? `Completed in ${el.completedIn}`.green
+          : 'Pending'.magenta
 
       console.log(`${i}. ${description}: ${state}`)
     })
+  }
+
+  showCompleteList() {
+    this.showList(this.arrayList)
+  }
+
+  showCompletedTasks(completed = true) {
+    const completedTasks = this.arrayList.filter((el) =>
+      completed ? el.completedIn !== null : el.completedIn === null
+    )
+    this.showList(completedTasks)
   }
 }
 

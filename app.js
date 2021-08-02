@@ -26,7 +26,21 @@ const main = async () => {
           console.log('No tasks to show yet'.red)
           return
         }
-        tasks.completeList()
+        tasks.showCompleteList()
+        break
+      case 3:
+        if (Object.keys(tasks._list).length === 0) {
+          console.log('No tasks to show yet'.red)
+          return
+        }
+        tasks.showCompletedTasks(true)
+        break
+      case 4:
+        if (Object.keys(tasks._list).length === 0) {
+          console.log('No tasks to show yet'.red)
+          return
+        }
+        tasks.showCompletedTasks(false)
         break
     }
 
