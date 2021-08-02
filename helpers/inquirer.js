@@ -79,9 +79,11 @@ const tasksToDeleteList = async (tasks = []) => {
     }
   })
 
-  choices.unshift({
-    value: 0,
-    name: `${'0'.magenta}. Cancel`,
+  const cancelIndex = `${choices.length + 1}`.magenta
+
+  choices.push({
+    value: choices.length + 1,
+    name: `${cancelIndex}. Cancel`,
   })
 
   const questions = [
@@ -96,6 +98,35 @@ const tasksToDeleteList = async (tasks = []) => {
   const { id } = await inquirer.prompt(questions)
 
   return id
+}
+
+const tasksToComplete = async (tasks = []) => {
+  const choices = tasks.map((task, idx) => {
+    const index = `${idx + 1}.`.magenta
+
+    return {
+      value: task.id,
+      name: `${index} ${task.description}: ${
+        task.completedIn
+          ? `Completed in ${task.completedIn}`.green
+          : 'Pending'.red
+      }`,
+      checked: task.completedIn ? true : false,
+    }
+  })
+
+  const question = [
+    {
+      type: 'checkbox',
+      name: 'ids',
+      message: 'Please, choose',
+      choices,
+    },
+  ]
+
+  const { ids } = await inquirer.prompt(question)
+
+  return ids
 }
 
 const confirmChoice = async (message) => {
@@ -118,4 +149,5 @@ module.exports = {
   readInput,
   tasksToDeleteList,
   confirmChoice,
+  tasksToComplete,
 }
