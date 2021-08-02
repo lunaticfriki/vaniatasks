@@ -19,6 +19,13 @@ class Tasks {
     this._list = {}
   }
 
+  getCompletedTasks(completed = true) {
+    const completedList = this.arrayList.filter((el) =>
+      completed ? el.completedIn !== null : el.completedIn === null
+    )
+    return completedList
+  }
+
   loadTasksFromArray(tasks = []) {
     tasks.forEach((task) => {
       this._list[task.id] = task
@@ -49,11 +56,8 @@ class Tasks {
     this.showList(this.arrayList)
   }
 
-  showCompletedTasks(completed = true) {
-    const completedTasks = this.arrayList.filter((el) =>
-      completed ? el.completedIn !== null : el.completedIn === null
-    )
-    this.showList(completedTasks)
+  showCompletedTasks(completed) {
+    this.showList(this.getCompletedTasks(completed))
   }
 
   deleteTasks(id = '') {

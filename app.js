@@ -30,28 +30,24 @@ const main = async () => {
       case 2:
         if (Object.keys(tasks._list).length === 0) {
           console.log('No tasks to show yet'.red)
-          return
         }
         tasks.showCompleteList()
         break
       case 3:
-        if (Object.keys(tasks._list).length === 0) {
-          console.log('No tasks to show yet'.red)
-          return
+        if (tasks.getCompletedTasks().length === 0) {
+          console.log('No tasks completed yet'.red)
         }
         tasks.showCompletedTasks(true)
         break
       case 4:
-        if (Object.keys(tasks._list).length === 0) {
-          console.log('No tasks to show yet'.red)
-          return
+        if (tasks.getCompletedTasks(false).length === 0) {
+          console.log('No pending tasks to show'.red)
         }
         tasks.showCompletedTasks(false)
         break
       case 6:
         if (Object.keys(tasks._list).length === 0) {
           console.log('No tasks to delete yet'.red)
-          return
         }
         const id = await tasksToDeleteList(tasks.arrayList)
         if (id !== 0) {
