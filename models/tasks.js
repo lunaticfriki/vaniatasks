@@ -1,3 +1,4 @@
+require('colors')
 const Task = require('./task')
 
 class Tasks {
@@ -28,6 +29,18 @@ class Tasks {
     const task = new Task(description)
 
     this._list[task.id] = task
+  }
+
+  completeList() {
+    console.log()
+    this.arrayList.map((el, index) => {
+      const i = `${index + 1}`.green
+      const description = el.description
+      const state =
+        el.completedIn !== null ? 'Completed'.green : 'Pending'.magenta
+
+      console.log(`${i}. ${description}: ${state}`)
+    })
   }
 }
 

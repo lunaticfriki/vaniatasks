@@ -26,7 +26,7 @@ const main = async () => {
           console.log('No tasks to show yet'.red)
           return
         }
-        console.log(tasks.arrayList)
+        tasks.completeList()
         break
     }
 
