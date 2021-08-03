@@ -11,7 +11,7 @@ yarn install
 ## To run the application
 
 ```
-yarn dev
+yarn start
 ```
 
 ##### lunaticfriki, 2021

@@ -24,7 +24,7 @@ const inquirerMenu = async () => {
    * Don't touch this logs in order to see a beautiful aligned heading :D
    */
   console.log(' =============================='.yellow)
-  console.log(` === ${'WELCOME TO VANIATASKS!'.toUpperCase()} ===`.rainbow)
+  console.log(` === ${'WELCOME TO VANIATASKS!'.toUpperCase()} ===`.cyan)
   console.log(' ==============================\n'.yellow)
   /**
    * End of the beautiful aligned heading ^_^
